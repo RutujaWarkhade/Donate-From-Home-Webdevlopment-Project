@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffb347;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], textarea, input[type="number"], input[type="datetime-local"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"], .back-button {
+            width: 100%;
+            padding: 10px;
+            background-color: orangered;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover, .back-button:hover {
+            background-color: #ff944d;
+        }
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            color: orangered;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Registration Form</h2>
+        <form id="otherdonationform">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="phone">Contact Number:</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your contact number" required>
+            </div>
+            <div class="form-group">
+                <label for="donationMessage">What You Want To Donate?</label>
+                <textarea id="donationMessage" name="donationMessage" rows="3" placeholder="Describe your donation" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="donationTime">Preferred Donation Time:</label>
+                <input type="datetime-local" id="donationTime" name="donationTime" required>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+
+        <div class="success-message" id="successMessage">
+            Your response has been collected!<br>
+            Our team will contact you soon.
+        </div>
+
+        <!-- Always visible back button -->
+        <button class="back-button" onclick="window.location.href='frontpage.html';">Back to Home</button>
+    </div>
+
+    <script>
+        // Form submission handling
+        document.getElementById('otherdonationform').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            // Get form data
+            const formData = new FormData(this);
+            const formObject = Object.fromEntries(formData.entries());
+
+            // Send the form data to the backend
+            fetch('http://localhost:5000/donation/other', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formObject)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response
+                if (data.message) {
+                    // Hide form and display success message
+                    document.getElementById('otherdonationform').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                } else if (data.error) {
+                    alert(data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+
+</body>
+</html>

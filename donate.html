@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffe4b2;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            height:500px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .donation-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .donation-option {
+            text-align: center;
+            cursor: pointer;
+            flex: 1 1 22%;
+            margin: 10px;
+            transition: transform 0.2s;
+            overflow: hidden;
+        }
+        .donation-option img {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 5px solid orange;
+            box-sizing: border-box;
+        }
+        .donation-option:hover {
+            transform: scale(1.05);
+        }
+        .donate-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .donate-button:hover {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Choose Donation Type</h1>
+    <div class="donation-options">
+        <div class="donation-option" onclick="showRegistration('fooddonate.html')">
+            <img src="C:/Users/om/Downloads/foodd.jpg" alt="Donate Food">
+            <p>Donate Food</p>
+            <div class="donate-button">Donate</div>
+        </div>
+        <div class="donation-option" onclick="showRegistration('clothdonate.html')">
+            <img src="C:/Users/om/Downloads/clothes.jpg" alt="Donate Clothing">
+            <p>Donate Clothing</p>
+            <div class="donate-button">Donate</div>
+        </div>
+        <div class="donation-option" onclick="showRegistration('money.html')">
+            <img src="C:/Users/om/Downloads/money1.jpg" alt="Donate Money">
+            <p>Donate Money</p>
+            <div class="donate-button">Donate</div>
+        </div>
+        <div class="donation-option" onclick="showRegistration('otherdonate.html')">
+            <img src="C:/Users/om/Downloads/other(donate).jpg" alt="Other Donation">
+            <p>Other Donation</p>
+            <div class="donate-button">Donate</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showRegistration(formUrl) {
+        window.open(formUrl, '_blank'); // Opens in a new tab
+    }
+</script>
+
+</body>
+</html>

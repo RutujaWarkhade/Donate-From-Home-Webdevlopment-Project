@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #ffe4b2;
+        }
+        .title {
+            text-align: center;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 100px; /* Adjust size as needed */
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .contact-item img {
+            margin-right: 10px;
+            width: 24px; /* Adjust size as needed */
+            height: 24px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background-color: orangered;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: orange;
+        }
+        .query-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="title">Contact Us</h1>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <img src="https://th.bing.com/th?id=OIP.zne33dobcJeNnONgdjWTWQHaHw&w=244&h=255&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Phone Icon"> 
+                <p>Phone Number: 1234567891</p>
+            </div>
+            <div class="contact-item">
+                <img src="https://th.bing.com/th?id=OIP.T5isiHvT1bD73Aopv8AgqgHaH1&w=243&h=257&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Email Icon"> 
+                <p>Email Address: sanjivani@org.com</p>
+            </div>
+            <div class="contact-item">
+                <img src="https://th.bing.com/th?id=OIP.qYdZJNEVvpeMFeNoGZTccQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Address Icon"> 
+                <p>Address: Sanjivani College of Engineering, Kopargaon, Tal Kopargaon, Dist Ahelyanagar</p>
+            </div>
+        </div>
+
+        <!-- Query Section -->
+        <p class="query-info">Have you any query? Contact us!</p>
+
+        <!-- Form Section -->
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="user-email">Your Email:</label>
+                <input type="email" id="user-email" name="user-email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="query">Your Query:</label>
+                <textarea id="query" name="query" rows="4" placeholder="Enter your query" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+
+        <!-- Success Message -->
+        <p class="message" id="success-message">We will contact you soon!</p>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            successMessage.style.display = 'block'; // Show the success message
+            form.reset(); // Reset the form fields
+        });
+    </script>
+</body>
+</html>
